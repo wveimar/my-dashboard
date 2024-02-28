@@ -1,9 +1,8 @@
-
-<app-title title="Control Flow Component" withShadow/>
+<app-title title="Control Flow Component" withShadow />
 
 <section class="grid grid-cols-1 md:grid-cols-2 gap-3">
   <div class="bg-white rounded shadow p-10">
-    <h2 class="text-2xl font-bold mb-5">if :{{ showContent() }}</h2>
+    <h2 class="text-2xl font-bold mb-5">if : {{ showContent() }} "Signals if y else"</h2>
     <button
       class="p-2 bg-blue-500 rounded text-white"
       (click)="toggleContent()"
@@ -11,15 +10,17 @@
       Click me!
     </button>
     @if (showContent()){
-    <p>hola button</p>
+    <p>button true</p>
     }@else {
-    <p>hola button true</p>
+    <p>button False</p>
     }
   </div>
 
+  <!-- @switch () {} -->
+
   <div class="bg-white rounded shadow p-10">
-    <h2 class="text-3xl">{{ grade() }}</h2>
-    @switch (grade()) { @case ("A") {
+    <h2 class="text-3xl">{{ grade() }} Signal Typescrip Switch</h2>
+    @switch (grade()) { @case ("F") {
     <p>Arriba de 90</p>
 
     } @case ("B") {
@@ -30,17 +31,23 @@
 
     } }
   </div>
+
+  <!-- @for  -->
   <div class="bg-white rounded shadow p-10">
-    <ul >
-      @for (framework of frameworks();
-       track frameworks; 
-       let i = $index, first = $first,last = $last, even = $even,odd = $odd,count = $count) {
-      <li >
-        {{ i+1 }}/{{ count }}
-        {{ framework }}-{{first}}-{{even}}
+    <h1 class="text-3xl mb-2">For</h1>
+    <ul>
+      @for (framework of frameworks(); track frameworks; let i = $index, first =
+      $first,last = $last, even = $even,odd = $odd,count = $count) {
+      <li [class] = "{
+        'bg-red-100': even && !first && !last,
+        'bg-pink-100': odd && !first && !last,
+        'bg-blue-100':  first || last,
+      }">
+        {{ i + 1 }}/{{ count }} {{ framework }}-{{ first }}-{{ even }} -{{
+          odd
+        }}
       </li>
-    }
-    
+      }
     </ul>
   </div>
 
@@ -52,10 +59,9 @@
       <li>{{ framework2 }}</li>
 
       }@empty {
-        <li>
-            no hay framewors
-        </li>
+      <li>no hay framewors</li>
       }
     </ul>
   </div>
 </section>
+<app-title title="Control Flow Component" withShadow />

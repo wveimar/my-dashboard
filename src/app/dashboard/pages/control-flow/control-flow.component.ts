@@ -19,6 +19,4 @@ export default class ControlFlowComponent {
   public toggleContent(){
     this.showContent.update (value => !value)
   }
- 
-
 }
