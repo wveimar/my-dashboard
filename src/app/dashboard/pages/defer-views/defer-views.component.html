@@ -1,4 +1,28 @@
+<app-title title="Difer View"/>
 <section class="grid grid-cols-1">
-    <app-hevy-loaders-slow/>
+    <p>defer-view works!</p>
+
+    
+    @defer (){
+        <app-hevy-loaders-slow cssClass="bg-blue-500"/>
+    }@placeholder {
+        <p class="h-[600px] w-full bg-gradient-to-r from-gray-400 animate-pulse">
+            Cargando ...
+        </p>
+    }
+    @defer (on hover){
+        <app-hevy-loaders-slow cssClass="bg-green-500"/>
+    }@placeholder {
+        <p class="h-[600px] w-full bg-gradient-to-r from-gray-400 animate-pulse">
+            Cargando ...
+        </p>
+    }
+    @defer (on viewport){
+        <app-hevy-loaders-slow cssClass="bg-red-500"/>
+    }@placeholder {
+        <p class="h-[600px] w-full bg-gradient-to-r from-gray-400 animate-pulse">
+            Cargando ...
+        </p>
+    }
 </section>
 

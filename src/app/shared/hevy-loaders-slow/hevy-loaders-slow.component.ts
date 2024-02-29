@@ -1,19 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-hevy-loaders-slow',
   standalone: true,
   imports: [CommonModule],
-  template: `<h1>hola HevyLoadersSlowComponent</h1>`,
-  
+  template: `<section [ngClass]="['w-full h-[600px]', cssClass]"></section>`,
 })
 export class HevyLoadersSlowComponent {
+  @Input({ required: true }) cssClass!: string;
 
-  constructor(){
+  constructor() {
     const start = Date.now();
-    while (Date.now() - start < 3000) {};
-    console.log("cagando...");
+    while (Date.now() - start < 1000) {}
+    console.log('cagando...');
   }
-
 }
